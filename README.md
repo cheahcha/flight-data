@@ -23,4 +23,5 @@ More details on the dependencies used can be found in the build.sbt file.
 2. Install scala and spark (homebrew).
 3. On IntelliJ (or any other IDE), open the project as a sbt project. Build should start 
 automatically. 
-4. Run the main class which contains the main function.
+4. Run the main class which contains the main function. 
+5. Test functions in the MainTest.scala file.
