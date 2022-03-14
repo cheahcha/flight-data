@@ -1,9 +1,5 @@
-import org.apache.spark.sql.{Row, SaveMode, SparkSession, SQLImplicits}
+import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.types._
-import scala.collection.IterableOnce.iterableOnceExtensionMethods
-import scala.collection.mutable._
 import scala.collection.mutable.ListBuffer
 
 object Main {
