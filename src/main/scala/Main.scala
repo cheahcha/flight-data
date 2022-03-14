@@ -115,7 +115,9 @@ object Main {
    val longest_run = flight_df.sort("date").rdd
       .map(row => (row.get(0).toString(), ListBuffer(row.get(2).toString(),row.get(3).toString())))
       .reduceByKey(concatList(_,_))
-      .mapValues(getMaxRun(_,0)).collect() // return type is Array[(String, String)]
+      .mapValues(getMaxRun(_,0))
+      .sortBy(row => row._2, ascending=false)
+      .collect() // return type is Array[(String, String)]
 
     import spark.implicits._ // to convert rdd to df
     val longest_runDF = spark.sparkContext.parallelize(longest_run).toDF("Passenger Id","Longest Run")
@@ -142,6 +144,7 @@ object Main {
       .map(row => (row, 1))
       .reduceByKey(_+_)
       .filter(row => row._2 > 3)
+      .sortBy(row => row._2, ascending=false)
       .map(row => (row._1._1, row._1._2,row._2))
       .collect()
 
